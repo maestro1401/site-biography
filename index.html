@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css">
+  <title>Моя Биография</title>
+</head>
+<body>
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="video/edit.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="bio-container">
+    <div class="bio-box">
+      <h1>Обо мне</h1>
+      <p>👋 Привет! Меня зовут Маэстро, я — вайб кодер. Мне 17 лет</p>
+      <p>Простой человек, который не любит страдать над кодом часами.</p>
+      <p>Если что-то не получается — всегда придут на помощь нейросети.</p>
+      <p>Но важно напомнить: нейронки не заменят настоящего программиста, и я уважаю их труд.</p>
+    </div>
+
+    <div class="social-links">
+      <a href="https://t.me/maestromc0" target="_blank">
+        <img src="img/tg.png" alt="Telegram" style="width: 20px; vertical-align: middle;"> Telegram
+      </a>
+      <a href="https://www.tiktok.com/@maestromc11" target="_blank">
+        <img src="img/tt.png" alt="TikTok" style="width: 20px; vertical-align: middle;"> TikTok
+      </a>
+      <a href="https://discord.gg/VC7zZCMv" target="_blank">
+        <img src="img/ds.png" alt="Discord" style="width: 20px; vertical-align: middle;"> Discord
+      </a>
+    </div>
+
+    <button class="toggle-projects-btn" onclick="toggleProjectsBox()">
+      Проекты <span id="arrow" class="arrow">▼</span>
+    </button>
+
+    <div class="projects-box-wrapper" id="projectsWrapper">
+      <div class="projects-box">
+        <div class="project-buttons">
+          <button onclick="showProjects('mine')">
+            <img src="img/brain.png" alt="Telegram" style="width: 20px; vertical-align: middle;">
+            Проекты, созданные мной
+          </button>
+          <button onclick="showProjects('ai')">
+            <img src="img/gpt.png" alt="Telegram" style="width: 20px; vertical-align: middle;">
+            Проекты с помощью AI
+          </button>
+        </div>
+
+        <div id="mine" class="project-list active">
+          <div class="project-item">
+            ✅ Telegram-бот для учёта времени
+            <button onclick="toggleDesc(this)">Подробнее</button>
+            <div class="project-description">
+              Бот собирает статистику и напоминания, сделан на Python с использованием библиотеки aiogram.
+              <br>
+              <a href="https://github.com/yourusername/telegram-time-bot" target="_blank" class="github-btn">
+                <img src="img/github.png" alt="GitHub" style="width: 20px; vertical-align: middle;"> GitHub
+              </a>
+            </div>
+          </div>
+          <div class="project-item">
+            ✅ Автоферма в Roblox с Python-скриптом
+            <button onclick="toggleDesc(this)">Подробнее</button>
+            <div class="project-description">
+              Фармит кейсы и алмазы в Pet Simulator 99. Работает через эмулятор LDPlayer.
+              <br>
+              <a href="https://github.com/yourusername/roblox-autofarm" target="_blank" class="github-btn">
+                <img src="img/github.png" alt="GitHub" style="width: 20px; vertical-align: middle;"> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div id="ai" class="project-list">
+          <div class="project-item">
+            🤖 Сайт биографии на HTML+CSS+JS
+            <button onclick="toggleDesc(this)">Подробнее</button>
+            <div class="project-description">
+              Этот сайт ты сейчас и смотришь — полностью сделан с помощью ChatGPT и моей идеей оформления :) (Весь текст писал я, не думайте, что у меня настолько не думает голова)
+              <br>
+              <a href="https://github.com/yourusername/bio-site" target="_blank" class="github-btn">
+                <img src="img/github.png" alt="GitHub" style="width: 20px; vertical-align: middle;"> GitHub
+              </a>
+            </div>
+          </div>
+          <div class="project-item">
+            🤖 Жуткая мини-игра с угадыванием окон
+            <button onclick="toggleDesc(this)">Подробнее</button>
+            <div class="project-description">
+              Используется Python, Tkinter и Pygame. Если ошибаешься — запускается скример. (В разработке, делается для недохакера)
+              <br>
+              <a href="https://github.com/yourusername/scary-window-game" target="_blank" class="github-btn">
+                <img src="img/github.png" alt="GitHub" style="width: 20px; vertical-align: middle;"> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleProjectsBox() {
+      const wrapper = document.getElementById("projectsWrapper");
+      const arrow = document.getElementById("arrow");
+      wrapper.classList.toggle("active");
+      arrow.classList.toggle("rotate");
+    }
+
+    function showProjects(type) {
+      const lists = document.querySelectorAll('.project-list');
+      lists.forEach(el => el.classList.remove('active'));
+      document.getElementById(type).classList.add('active');
+    }
+
+    function toggleDesc(btn) {
+      const desc = btn.nextElementSibling;
+      desc.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
